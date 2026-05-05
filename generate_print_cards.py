@@ -199,15 +199,15 @@ def render_front(p: dict) -> Image.Image:
         contacts.append(("MOBIL", p["phone2"]))
     contacts.append(("E-MAIL", p["email"]))
 
-    cy = rule_y + round(13 * MM)
-    line_h = round(7 * MM) if "phone2" in p else round(8 * MM)
+    cy = rule_y + round(12 * MM)
+    line_h = round(6 * MM) if "phone2" in p else round(7 * MM)
     for label, value in contacts:
         draw.text((text_x, cy), label, fill=GOLD_DARK, font=label_font)
-        draw.text((text_x, cy + 16), value, fill=PETROL_DARK, font=value_font)
+        draw.text((text_x, cy + 15), value, fill=PETROL_DARK, font=value_font)
         cy += line_h + 4
 
-    # URL ganz unten links
-    url_y = H_BLEED - BLEED - SAFE - 22
+    # URL direkt unter dem Kontakt-Block (dynamisch positioniert)
+    url_y = max(cy + 8, H_BLEED - BLEED - SAFE - 22)
     draw.text((text_x, url_y), "aurum-fassadenreinigung.de",
               fill=GOLD_DARK, font=url_font)
 
