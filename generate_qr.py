@@ -27,10 +27,10 @@ GOLD   = (218, 176, 93)
 WHITE  = (255, 255, 255)
 
 CARDS = [
-    ("uebersicht", "",             "Alle Visitenkarten"),
-    ("khafi",      "khafi.html",   "Mustafa Khafi · Geschäftsführer"),
-    ("julia",      "julia.html",   "Julia Schneider · Partnerschaften"),
-    ("cornelia",   "cornelia.html","Cornelia Jöge · Bereichsleiterin Nord"),
+    ("uebersicht", "visitenkarten/",             "Alle Visitenkarten"),
+    ("khafi",      "visitenkarten/khafi.html",   "Mustafa Khafi · Geschäftsführer"),
+    ("julia",      "visitenkarten/julia.html",   "Julia Schneider · Partnerschaften"),
+    ("cornelia",   "visitenkarten/cornelia.html","Cornelia Jöge · Bereichsleiterin Nord"),
 ]
 
 def make_qr(url: str, label: str, out: str, logo_path: str | None = None):

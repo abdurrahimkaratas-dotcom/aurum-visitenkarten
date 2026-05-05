@@ -21,7 +21,7 @@ except ImportError:
     print("Bitte installieren: pip install qrcode[pil]")
     sys.exit(1)
 
-BASE_URL = "https://abdurrahimkaratas-dotcom.github.io/aurum-visitenkarten"
+BASE_URL = "https://splendorous-starship-7e8134.netlify.app/visitenkarten"
 
 PERSONS = [
     {
