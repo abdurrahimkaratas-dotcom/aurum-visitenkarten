@@ -555,3 +555,144 @@ body { padding-top: 88px; }
   .card { box-shadow: none; border: 1px solid #ddd; }
   .card__actions { display: none; }
 }
+
+/* =================================================================
+   Animationen — Premium Aurum Feel
+   ================================================================= */
+
+@keyframes au-slide-down {
+  from { opacity: 0; transform: translate3d(0, -16px, 0); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes au-fade-up {
+  from { opacity: 0; transform: translate3d(0, 28px, 0); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes au-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes au-card-reveal {
+  from { opacity: 0; transform: translate3d(0, 32px, 0) scale(0.97); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes au-photo-pop {
+  0%   { opacity: 0; transform: translateX(-50%) scale(0.65); }
+  55%  { opacity: 1; transform: translateX(-50%) scale(1.06); }
+  100% { opacity: 1; transform: translateX(-50%) scale(1); }
+}
+
+@keyframes au-rule-grow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+@keyframes au-shimmer {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(120%); }
+}
+
+/* --- Site header slides down --- */
+.site-header {
+  animation: au-slide-down 0.55s cubic-bezier(.22,1,.36,1) both;
+}
+
+/* --- Card-Container: ganzes Card fadet hoch --- */
+.card {
+  animation: au-card-reveal 0.7s cubic-bezier(.22,1,.36,1) 0.1s both;
+  will-change: transform, opacity;
+}
+
+/* Innerhalb der Karte: gestaffelte Bewegungen */
+.card__logo      { animation: au-fade-up 0.55s cubic-bezier(.22,1,.36,1) 0.55s both; }
+.card__brandbar  { animation: au-fade-in 0.5s  ease-out 0.75s both; }
+.card__photo-wrap{ animation: au-photo-pop 0.85s cubic-bezier(.34,1.56,.64,1) 0.65s both;
+                   transform-origin: 50% 50%; }
+.card__name      { animation: au-fade-up 0.55s cubic-bezier(.22,1,.36,1) 0.95s both; }
+.card__role      { animation: au-fade-up 0.55s cubic-bezier(.22,1,.36,1) 1.05s both; }
+.card__bio       { animation: au-fade-up 0.6s  cubic-bezier(.22,1,.36,1) 1.15s both; }
+.card__socials   { animation: au-fade-up 0.5s  ease-out 1.30s both; }
+.card__divider   { animation: au-fade-in 0.5s  ease-out 1.40s both; }
+.card__contacts .contact:nth-child(1) { animation: au-fade-up 0.5s cubic-bezier(.22,1,.36,1) 1.45s both; }
+.card__contacts .contact:nth-child(2) { animation: au-fade-up 0.5s cubic-bezier(.22,1,.36,1) 1.55s both; }
+.card__contacts .contact:nth-child(3) { animation: au-fade-up 0.5s cubic-bezier(.22,1,.36,1) 1.65s both; }
+.card__contacts .contact:nth-child(4) { animation: au-fade-up 0.5s cubic-bezier(.22,1,.36,1) 1.75s both; }
+.card__actions   { animation: au-fade-up 0.5s ease-out 1.85s both; }
+.card__footer    { animation: au-fade-in 0.5s ease-out 1.95s both; }
+
+/* Goldene Linie unter dem Namen wächst rein */
+.card__name + .card__role { position: relative; }
+.card__body { position: relative; }
+
+/* Hover-Mikro-Interaktion: Foto leicht zoomt */
+.card__photo-wrap { transition: transform 0.45s cubic-bezier(.22,1,.36,1); }
+.card:hover .card__photo-wrap { transform: translateX(-50%) scale(1.03); }
+
+/* Hover: Kontakt-Icons leuchten subtil */
+.contact__icon { transition: transform 0.3s cubic-bezier(.22,1,.36,1), box-shadow 0.3s ease; }
+.contact:hover .contact__icon {
+  transform: scale(1.06) rotate(-2deg);
+  box-shadow: 0 4px 16px rgba(11, 36, 37, 0.35);
+}
+
+/* Hover: LinkedIn-Pill und Kontakt speichern bekommen Shimmer */
+.social, .btn--primary { position: relative; overflow: hidden; }
+.social::after, .btn--primary::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(
+    90deg, transparent 0%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 100%
+  );
+  transform: translateX(-100%);
+  pointer-events: none;
+}
+.social:hover::after, .btn--primary:hover::after {
+  animation: au-shimmer 0.9s ease-out;
+}
+
+/* Übersichts-Tiles (index.html) — Scroll-Reveal */
+.tile {
+  opacity: 0;
+  transform: translate3d(0, 32px, 0);
+  transition: opacity 0.7s cubic-bezier(.22,1,.36,1),
+              transform 0.7s cubic-bezier(.22,1,.36,1),
+              box-shadow 0.25s ease;
+}
+.tile.is-revealed {
+  opacity: 1;
+  transform: none;
+}
+/* Ohne JS: Tiles sofort sichtbar */
+.no-js .tile { opacity: 1; transform: none; }
+
+/* Tile photo zoom on hover */
+.tile__photo { transition: transform 0.5s cubic-bezier(.22,1,.36,1); }
+.tile:hover .tile__photo { transform: scale(1.06); }
+
+/* Hero-Headline fadet in (Übersichtsseite) */
+.hero__logo  { animation: au-fade-up 0.7s cubic-bezier(.22,1,.36,1) 0.35s both; }
+.hero__chips { animation: au-fade-up 0.6s cubic-bezier(.22,1,.36,1) 0.55s both; }
+.hero__rule  { animation: au-fade-in 0.5s ease-out 0.75s both;
+               transform-origin: center;
+               animation-name: au-rule-grow, au-fade-in; }
+.hero h1     { animation: au-fade-up 0.7s cubic-bezier(.22,1,.36,1) 0.75s both; }
+.hero__sub   { animation: au-fade-up 0.6s cubic-bezier(.22,1,.36,1) 0.95s both; }
+
+/* Reduced motion respect */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .tile { opacity: 1; transform: none; }
+}
