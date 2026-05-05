@@ -14,8 +14,11 @@
     html, body { background: var(--aurum-cream-warm); }
     body {
       display: block;
-      padding: 0 0 80px;
+      padding: 88px 0 80px;
       align-items: stretch;
+    }
+    @media (max-width: 480px) {
+      body { padding-top: 76px; }
     }
 
     .hero {
@@ -224,6 +227,20 @@
   </style>
 </head>
 <body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-header__logo" href="index.html" aria-label="Aurum Visitenkarten">
+        <img src="images/aurum-logo.png" alt="Aurum Fassadenreinigung">
+      </a>
+      <nav class="site-header__nav" aria-label="Hauptnavigation">
+        <a class="site-header__link" href="https://www.aurum-fassadenreinigung.de" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <span>aurum-fassadenreinigung.de</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
   <header class="hero">
     <img src="images/aurum-logo.png" alt="Aurum Fassadenreinigung" class="hero__logo">
     <div class="hero__chips" aria-hidden="true">

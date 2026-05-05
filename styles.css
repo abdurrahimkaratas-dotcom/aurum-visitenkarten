@@ -1,24 +1,27 @@
 /* Aurum Brand Tokens — extrahiert von aurum-fassadenreinigung.de */
 :root {
-  --aurum-petrol: #004651;          /* Primärfarbe Webseite */
-  --aurum-petrol-dark: #002d35;
-  --aurum-petrol-light: #005e65;    /* Sekundär Webseite */
-  --aurum-mint: #b7d8d1;            /* Hellteal Akzent */
-  --aurum-gold: #dab05d;            /* Gold hell */
-  --aurum-gold-light: #ecd193;
-  --aurum-gold-dark: #997433;       /* Gold dunkel */
-  --aurum-cream: #fbfbfb;
-  --aurum-cream-warm: #f8f4ea;
+  --aurum-petrol-light: #2D6E70;
+  --aurum-petrol: #1F4E4F;          /* Primary — synchron mit Messe-LP */
+  --aurum-petrol-dark: #133638;
+  --aurum-mint: #B7D8D1;
+  --aurum-gold-light: #E0C088;
+  --aurum-gold: #C9A961;             /* Gold — synchron mit Messe-LP */
+  --aurum-gold-dark: #A88A4A;
+  --aurum-gold-deep: #8B7038;
+  --aurum-cream: #FAF7F0;
+  --aurum-cream-warm: #F4EFE3;
   --aurum-cream-dark: #ede8da;
-  --aurum-grey: #4a5a5d;
-  --aurum-grey-light: #8a979a;
-  --aurum-white: #ffffff;
-  --aurum-ink: #002025;
+  --aurum-grey: #5A5A5A;
+  --aurum-grey-light: #8A8A8A;
+  --aurum-white: #FFFFFF;
+  --aurum-ink: #1A1A1A;
+  --aurum-petrol-ink: #0B2425;
+  --aurum-line: rgba(31, 78, 79, 0.12);
 
-  --shadow-soft: 0 4px 20px rgba(0, 70, 81, 0.06), 0 1px 3px rgba(0, 70, 81, 0.04);
-  --shadow-medium: 0 16px 50px rgba(0, 70, 81, 0.10), 0 4px 12px rgba(0, 70, 81, 0.06);
-  --shadow-strong: 0 30px 80px rgba(0, 70, 81, 0.18), 0 8px 24px rgba(0, 70, 81, 0.10);
-  --shadow-gold: 0 6px 20px rgba(218, 176, 93, 0.30);
+  --shadow-soft: 0 1px 2px rgba(11, 36, 37, 0.06), 0 2px 8px rgba(11, 36, 37, 0.04);
+  --shadow-medium: 0 4px 12px rgba(11, 36, 37, 0.08), 0 12px 32px rgba(11, 36, 37, 0.08);
+  --shadow-strong: 0 12px 32px rgba(11, 36, 37, 0.12), 0 32px 80px rgba(11, 36, 37, 0.16);
+  --shadow-gold: 0 6px 20px rgba(201, 169, 97, 0.30);
 
   --serif: "Cormorant Garamond", "Playfair Display", Georgia, serif;
   --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -48,44 +51,102 @@ body {
   font-feature-settings: "kern" 1, "liga" 1;
 }
 
-.topnav {
-  width: 100%;
-  max-width: 440px;
-  margin-bottom: 18px;
-  display: flex;
-  justify-content: flex-start;
+/* Sticky Site-Header — synchron mit Aurum Messe-Landingpage */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  padding-top: env(safe-area-inset-top, 0px);
+  background: rgba(250, 247, 240, 0.94);
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid var(--aurum-line);
 }
 
-.topnav__link {
+.site-header__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.site-header__logo {
+  display: flex;
+  align-items: center;
+}
+
+.site-header__logo img {
+  height: 48px;
+  width: auto;
+  display: block;
+}
+
+.site-header__nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.site-header__link {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 16px;
-  background: var(--aurum-white);
-  color: var(--aurum-petrol-dark);
-  text-decoration: none;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
+  padding: 10px 18px;
   border-radius: 999px;
-  border: 1px solid rgba(218, 176, 93, 0.45);
-  box-shadow: var(--shadow-soft);
-  transition: all 0.2s ease;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--aurum-petrol-dark);
+  border: 1.5px solid rgba(31, 78, 79, 0.18);
+  background: transparent;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  white-space: nowrap;
 }
 
-.topnav__link:hover {
-  background: var(--aurum-petrol-dark);
-  color: var(--aurum-gold-light);
-  border-color: var(--aurum-petrol-dark);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-medium);
+.site-header__link:hover {
+  background: var(--aurum-petrol);
+  color: var(--aurum-cream);
+  border-color: var(--aurum-petrol);
 }
 
-.topnav__link svg {
+.site-header__link--primary {
+  background: linear-gradient(135deg, var(--aurum-gold-light) 0%, var(--aurum-gold) 50%, var(--aurum-gold-dark) 100%);
+  color: var(--aurum-petrol-ink);
+  border-color: transparent;
+  box-shadow: 0 4px 14px rgba(168, 138, 74, 0.30), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.site-header__link--primary:hover {
+  background: linear-gradient(135deg, var(--aurum-gold) 0%, var(--aurum-gold-dark) 50%, var(--aurum-gold-deep) 100%);
+  color: var(--aurum-petrol-ink);
+  border-color: transparent;
+}
+
+.site-header__link svg {
   width: 14px;
   height: 14px;
 }
+
+@media (max-width: 480px) {
+  .site-header__inner { padding: 10px 16px; gap: 10px; }
+  .site-header__logo img { height: 40px; }
+  .site-header__link { padding: 8px 14px; font-size: 12px; }
+  .site-header__link span:not(.icon) { display: none; }
+  .site-header__link--full span { display: inline; }
+}
+
+/* Body padding so content doesn't sit behind sticky header */
+body { padding-top: 88px; }
+@media (max-width: 480px) { body { padding-top: 76px; } }
+
+/* Legacy topnav fallback — wird auf Karten nicht mehr genutzt, aber Klassen
+   vorhanden lassen um alte Bookmarks nicht zu brechen */
+.topnav { display: none; }
 
 /* ------- Card ------- */
 .card {
