@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
   <header class="site-header">
     <div class="site-header__inner">
       <a class="site-header__logo" href="index.html" aria-label="Aurum Visitenkarten — Übersicht">
@@ -25,7 +26,7 @@
       </nav>
     </div>
   </header>
-  <main class="card" aria-label="Digitale Visitenkarte Mustafa Khafi">
+  <main id="main" class="card" aria-label="Digitale Visitenkarte Mustafa Khafi">
     <div class="card__inner">
       <header class="card__header">
         <img src="images/aurum-logo.png" alt="Aurum Fassadenreinigung" class="card__logo">
@@ -35,13 +36,17 @@
       </header>
 
       <div class="card__hero" aria-hidden="true">
-        <div class="card__photo-wrap">
-          <img src="images/khafi.jpg" alt="Porträt Mustafa Khafi" class="card__photo">
+        <div class="card__photo-wrap" style="view-transition-name: photo-khafi">
+          <picture>
+            <source type="image/avif" srcset="images/khafi-400.avif 400w, images/khafi-600.avif 600w, images/khafi-900.avif 900w" sizes="144px">
+            <source type="image/webp" srcset="images/khafi-400.webp 400w, images/khafi-600.webp 600w, images/khafi-900.webp 900w" sizes="144px">
+            <img src="images/khafi.jpg" alt="Porträt von Mustafa Khafi, Geschäftsführer" class="card__photo" width="900" height="900" fetchpriority="high">
+          </picture>
         </div>
       </div>
 
       <section class="card__body">
-        <h1 class="card__name">Mustafa Khafi</h1>
+        <h1 class="card__name" style="view-transition-name: name-khafi">Mustafa Khafi</h1>
         <p class="card__role">Geschäftsführer</p>
 
         <p class="card__bio">

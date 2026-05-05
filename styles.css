@@ -8,6 +8,7 @@
   --aurum-gold: #C9A961;             /* Gold — synchron mit Messe-LP */
   --aurum-gold-dark: #A88A4A;
   --aurum-gold-deep: #8B7038;
+  --aurum-gold-text: #7A6230;     /* AA-konform für Text auf Cream/Weiss (5+ : 1) */
   --aurum-cream: #FAF7F0;
   --aurum-cream-warm: #F4EFE3;
   --aurum-cream-dark: #ede8da;
@@ -96,7 +97,8 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 18px;
+  min-height: 44px;
+  padding: 12px 18px;
   border-radius: 999px;
   font-size: 13px;
   font-weight: 600;
@@ -284,7 +286,7 @@ body { padding-top: 88px; }
 
 .card__role {
   font-size: 10px;
-  color: var(--aurum-gold-dark);
+  color: var(--aurum-gold-text);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 3px;
@@ -566,8 +568,10 @@ body { padding-top: 88px; }
 }
 
 .card__footer a {
-  color: var(--aurum-gold-dark);
-  text-decoration: none;
+  color: var(--aurum-gold-text);
+  text-decoration: underline;
+  text-decoration-color: rgba(122, 98, 48, 0.40);
+  text-underline-offset: 3px;
 }
 
 .card__footer a:hover { color: var(--aurum-petrol); }
@@ -742,6 +746,55 @@ body { padding-top: 88px; }
 .hero h1     { animation: au-fade-up 0.7s cubic-bezier(.22,1,.36,1) 0.75s both; }
 .hero__sub   { animation: au-fade-up 0.6s cubic-bezier(.22,1,.36,1) 0.95s both; }
 
+/* =================================================================
+   Accessibility — sichtbarer Tastatur-Focus + Skip-Link
+   ================================================================= */
+
+:focus { outline: none; }
+
+:focus-visible {
+  outline: 3px solid var(--aurum-gold);
+  outline-offset: 3px;
+  border-radius: inherit;
+}
+
+.btn:focus-visible,
+.social:focus-visible,
+.contact:focus-visible,
+.site-header__link:focus-visible {
+  outline-color: var(--aurum-gold);
+  outline-offset: 4px;
+}
+
+.tile:focus-visible {
+  outline-color: var(--aurum-petrol);
+  outline-offset: 6px;
+}
+
+/* Skip-Link — nur sichtbar bei Tastatur-Fokus */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 24px;
+  background: var(--aurum-petrol-dark);
+  color: var(--aurum-gold-light);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  border-radius: 0 0 12px 12px;
+  z-index: 100;
+  transition: top 0.2s cubic-bezier(.22,1,.36,1);
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid var(--aurum-gold);
+  outline-offset: 2px;
+}
+
 /* Reduced motion respect */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -750,4 +803,197 @@ body { padding-top: 88px; }
     transition-duration: 0.01ms !important;
   }
   .tile { opacity: 1; transform: none; }
+}
+
+/* =================================================================
+   Modern CSS Upgrades — graceful degradation
+   ================================================================= */
+
+/* --- View Transitions: cross-document navigation animation --- */
+@view-transition { navigation: auto; }
+
+/* Persistente Elemente über Seiten hinweg */
+.site-header { view-transition-name: site-header; }
+.site-header__logo img { view-transition-name: brand-mark; }
+.skip-link { view-transition-name: skip-link; }
+
+/* Standard-Easing für VT-Pseudo-Elements */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.45s;
+  animation-timing-function: cubic-bezier(.22,1,.36,1);
+}
+
+::view-transition-old(brand-mark),
+::view-transition-new(brand-mark) {
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(.22,1,.36,1);
+}
+
+/* Photo-Morph zwischen Tile (Übersicht) und Card (Einzelseite) */
+@supports (view-transition-name: photo) {
+  ::view-transition-group(.photo-vt) {
+    animation-duration: 0.6s;
+    animation-timing-function: cubic-bezier(.34,1.2,.64,1);
+  }
+}
+
+/* --- Scroll-Driven Animations: replace IO-Observer for Tile-Reveals --- */
+@supports (animation-timeline: view()) {
+  .tile {
+    /* CSS macht die Reveal-Animation selbst, kein JS nötig */
+    opacity: 1;
+    transform: none;
+    animation: au-tile-reveal linear both;
+    animation-timeline: view();
+    animation-range: entry 5% cover 25%;
+  }
+  /* JS-Klasse interferiert nicht — gleicher Endzustand */
+  .tile.is-revealed { opacity: 1; transform: none; }
+}
+
+@keyframes au-tile-reveal {
+  from { opacity: 0; transform: translate3d(0, 36px, 0); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* --- color-mix() für sauberere Hover-States --- */
+@supports (background: color-mix(in oklab, white, black)) {
+  .contact:hover {
+    background: color-mix(in oklab, var(--aurum-white) 92%, var(--aurum-gold));
+    border-color: color-mix(in oklab, var(--aurum-gold) 50%, transparent);
+  }
+  .social:hover {
+    background: color-mix(in oklab, var(--aurum-petrol-dark) 90%, var(--aurum-gold-light));
+  }
+  .site-header__link:hover {
+    background: color-mix(in oklab, var(--aurum-petrol) 95%, var(--aurum-gold) 5%);
+  }
+}
+
+/* --- :has() für State-aware Styling --- */
+/* Cards mit LinkedIn-Section bekommen extra Atmung */
+.card__body:has(.card__socials) .card__bio {
+  margin-bottom: 16px;
+}
+
+/* Skip-Link aktiv → kein Header-Scroll-Hint */
+body:has(.skip-link:focus-visible) .site-header {
+  border-bottom-color: var(--aurum-gold);
+}
+
+/* --- @starting-style für sanfte Erst-Erscheinungen --- */
+@supports (transition-behavior: allow-discrete) {
+  .skip-link {
+    transition: top 0.3s cubic-bezier(.22,1,.36,1), background 0.2s;
+  }
+}
+
+/* --- Container Queries für die Karte (statt fixer Breakpoints) --- */
+.card { container: card / inline-size; }
+
+@container card (width < 380px) {
+  .contact__value { font-size: 13px; }
+  .card__name { font-size: 28px; }
+}
+
+/* =================================================================
+   Premium Polish — Editorial / Old-World craftsmanship
+   ================================================================= */
+
+/* 1. Cormorant fein-tunen */
+body {
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  text-rendering: optimizeLegibility;
+}
+.card__name {
+  font-feature-settings: "kern" 1, "liga" 1, "dlig" 1, "salt" 1;
+  font-variant-ligatures: discretionary-ligatures contextual;
+  letter-spacing: -0.005em;
+  text-wrap: balance;
+}
+.card__bio {
+  font-feature-settings: "kern" 1, "liga" 1;
+  text-wrap: pretty;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+/* 2. Atmospheric Grain auf der Petrol-Hero-Band */
+.card__hero { position: relative; }
+.card__hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.06 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* 3. Optisch-skaliertes Letter-Spacing */
+.card__role         { letter-spacing: 0.18em; }
+.card__brandbar-text{ letter-spacing: 0.32em; }
+.contact__label     { letter-spacing: 0.22em; }
+.card__qr-label     { letter-spacing: 0.30em; }
+.btn                { letter-spacing: 0.14em; }
+.card__footer       { letter-spacing: 0.22em; }
+
+/* 4. Aurum-Ornament — Goldpunkt-Siegel zwischen den Linien */
+.card__divider {
+  position: relative;
+  margin: 30px 0 22px;
+  height: 14px;
+}
+.card__divider::before,
+.card__divider::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: calc(50% - 22px);
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--aurum-gold) 80%);
+  max-width: 90px;
+}
+.card__divider::before { left: 0; }
+.card__divider::after  { right: 0; transform: scaleX(-1); }
+.card__divider-mark {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 14px;
+  height: 14px;
+  background: radial-gradient(circle, var(--aurum-gold-light) 0%, var(--aurum-gold) 55%, var(--aurum-gold-deep) 100%);
+  border-radius: 50%;
+  font-size: 0;
+  box-shadow:
+    0 0 0 3px var(--aurum-white),
+    0 0 0 4px rgba(201, 169, 97, 0.4),
+    0 1px 2px rgba(11, 36, 37, 0.2);
+}
+
+/* 5. Selection + animierter Photo-Ring */
+::selection { background: var(--aurum-gold); color: var(--aurum-petrol-ink); text-shadow: none; }
+::-moz-selection { background: var(--aurum-gold); color: var(--aurum-petrol-ink); }
+
+@property --au-ring-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 135deg;
+}
+@supports (background: conic-gradient(from 0deg, red, blue)) {
+  .card__photo-wrap {
+    background: conic-gradient(
+      from var(--au-ring-angle),
+      var(--aurum-gold-light) 0deg,
+      var(--aurum-gold) 110deg,
+      var(--aurum-gold-deep) 220deg,
+      var(--aurum-gold) 320deg,
+      var(--aurum-gold-light) 360deg
+    );
+    transition: --au-ring-angle 1.4s cubic-bezier(.22,1,.36,1),
+                transform 0.45s cubic-bezier(.22,1,.36,1);
+  }
+  .card:hover .card__photo-wrap { --au-ring-angle: 495deg; }
 }

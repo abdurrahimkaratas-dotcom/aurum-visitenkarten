@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
   <header class="site-header">
     <div class="site-header__inner">
       <a class="site-header__logo" href="index.html" aria-label="Aurum Visitenkarten — Übersicht">
@@ -25,7 +26,7 @@
       </nav>
     </div>
   </header>
-  <main class="card" aria-label="Digitale Visitenkarte Julia Schneider">
+  <main id="main" class="card" aria-label="Digitale Visitenkarte Julia Schneider">
     <div class="card__inner">
       <header class="card__header">
         <img src="images/aurum-logo.png" alt="Aurum Fassadenreinigung" class="card__logo">
@@ -35,13 +36,17 @@
       </header>
 
       <div class="card__hero" aria-hidden="true">
-        <div class="card__photo-wrap">
-          <img src="images/julia.jpg" alt="Porträt Julia Schneider" class="card__photo">
+        <div class="card__photo-wrap" style="view-transition-name: photo-julia">
+          <picture>
+            <source type="image/avif" srcset="images/julia-400.avif 400w, images/julia-600.avif 600w, images/julia-900.avif 900w" sizes="144px">
+            <source type="image/webp" srcset="images/julia-400.webp 400w, images/julia-600.webp 600w, images/julia-900.webp 900w" sizes="144px">
+            <img src="images/julia.jpg" alt="Porträt von Julia Schneider, Expertin für Partnerschaften in der Wohnungswirtschaft" class="card__photo" width="900" height="900" fetchpriority="high">
+          </picture>
         </div>
       </div>
 
       <section class="card__body">
-        <h1 class="card__name">Julia Schneider</h1>
+        <h1 class="card__name" style="view-transition-name: name-julia">Julia Schneider</h1>
         <p class="card__role">Partnerschaften Wohnungswirtschaft</p>
 
         <p class="card__bio">

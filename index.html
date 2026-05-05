@@ -171,8 +171,8 @@
     }
 
     .tile__role {
-      color: var(--aurum-gold-dark);
-      font-size: 10px;
+      color: var(--aurum-gold-text);
+      font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 2.5px;
       font-weight: 700;
@@ -189,7 +189,7 @@
       text-transform: uppercase;
       letter-spacing: 1.8px;
       padding-top: 16px;
-      border-top: 1px solid rgba(218, 176, 93, 0.35);
+      border-top: 1px solid rgba(168, 138, 74, 0.55);
       width: 100%;
       justify-content: center;
     }
@@ -211,7 +211,7 @@
       font-weight: 600;
     }
 
-    .footer-note a { color: var(--aurum-gold-dark); text-decoration: none; }
+    .footer-note a { color: var(--aurum-gold-text); text-decoration: underline; text-decoration-color: rgba(122,98,48,0.40); text-underline-offset: 3px; }
     .footer-note a:hover { color: var(--aurum-petrol); }
 
     @media (max-width: 600px) {
@@ -227,6 +227,7 @@
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
   <header class="site-header">
     <div class="site-header__inner">
       <a class="site-header__logo" href="index.html" aria-label="Aurum Visitenkarten">
@@ -253,31 +254,43 @@
     <p class="hero__sub">Lernen Sie Ihre persönlichen Ansprechpartner kennen — direkt anrufen, schreiben oder Kontakt speichern.</p>
   </header>
 
-  <div class="container">
+  <div class="container" id="main">
     <div class="grid">
       <a class="tile" href="khafi.html">
-        <div class="tile__photo-wrap">
-          <img src="images/khafi.jpg" alt="Mustafa Khafi" class="tile__photo">
+        <div class="tile__photo-wrap photo-vt" style="view-transition-name: photo-khafi">
+          <picture>
+            <source type="image/avif" srcset="images/khafi-400.avif 400w, images/khafi-600.avif 600w" sizes="132px">
+            <source type="image/webp" srcset="images/khafi-400.webp 400w, images/khafi-600.webp 600w" sizes="132px">
+            <img src="images/khafi.jpg" alt="Porträt von Mustafa Khafi, Geschäftsführer" class="tile__photo" width="132" height="132">
+          </picture>
         </div>
-        <h2>Mustafa Khafi</h2>
+        <h2 style="view-transition-name: name-khafi">Mustafa Khafi</h2>
         <p class="tile__role">Geschäftsführer</p>
         <span class="tile__cta">Visitenkarte ansehen</span>
       </a>
 
       <a class="tile" href="julia.html">
-        <div class="tile__photo-wrap">
-          <img src="images/julia.jpg" alt="Julia Schneider" class="tile__photo">
+        <div class="tile__photo-wrap photo-vt" style="view-transition-name: photo-julia">
+          <picture>
+            <source type="image/avif" srcset="images/julia-400.avif 400w, images/julia-600.avif 600w" sizes="132px">
+            <source type="image/webp" srcset="images/julia-400.webp 400w, images/julia-600.webp 600w" sizes="132px">
+            <img src="images/julia.jpg" alt="Porträt von Julia Schneider, Expertin für Partnerschaften" class="tile__photo" width="132" height="132">
+          </picture>
         </div>
-        <h2>Julia Schneider</h2>
+        <h2 style="view-transition-name: name-julia">Julia Schneider</h2>
         <p class="tile__role">Partnerschaften Wohnungswirtschaft</p>
         <span class="tile__cta">Visitenkarte ansehen</span>
       </a>
 
       <a class="tile" href="cornelia.html">
-        <div class="tile__photo-wrap">
-          <img src="images/cornelia.jpg" alt="Cornelia Jöge" class="tile__photo">
+        <div class="tile__photo-wrap photo-vt" style="view-transition-name: photo-cornelia">
+          <picture>
+            <source type="image/avif" srcset="images/cornelia-400.avif 400w, images/cornelia-600.avif 600w" sizes="132px">
+            <source type="image/webp" srcset="images/cornelia-400.webp 400w, images/cornelia-600.webp 600w" sizes="132px">
+            <img src="images/cornelia.jpg" alt="Porträt von Cornelia Jöge, Bereichsleiterin Nord" class="tile__photo" width="132" height="132">
+          </picture>
         </div>
-        <h2>Cornelia Jöge</h2>
+        <h2 style="view-transition-name: name-cornelia">Cornelia Jöge</h2>
         <p class="tile__role">Bereichsleiterin Nord</p>
         <span class="tile__cta">Visitenkarte ansehen</span>
       </a>
