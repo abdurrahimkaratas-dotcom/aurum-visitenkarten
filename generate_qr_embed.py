@@ -20,6 +20,8 @@ CARDS = [
     ("khafi",    f"{BASE}/khafi.html"),
     ("julia",    f"{BASE}/julia.html"),
     ("cornelia", f"{BASE}/cornelia.html"),
+    ("holger",   f"{BASE}/holger.html"),
+    ("abdul",    f"{BASE}/abdul.html"),
 ]
 
 PETROL = (19, 54, 56)

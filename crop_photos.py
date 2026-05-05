@@ -13,6 +13,8 @@ TARGETS = {
     "julia.jpg":    (0.43, 0.22),
     "cornelia.jpg": (0.44, 0.24),
     "khafi.jpg":    (0.46, 0.24),
+    "holger.jpg":   (0.47, 0.20),
+    "abdul.png":    (0.50, 0.30),
 }
 
 CROP_SIZE = 1400  # output square size in source pixels (then we keep at full res)
@@ -34,7 +36,11 @@ for filename, (fx, fy) in TARGETS.items():
     cropped = img.crop(box)
     # downscale slightly to keep file size reasonable while staying sharp
     cropped = cropped.resize((900, 900), Image.LANCZOS)
-    cropped.save(src, "JPEG", quality=92, optimize=True, progressive=True)
+    # Save as JPEG (convert RGBA/P to RGB if needed)
+    if cropped.mode != "RGB":
+        cropped = cropped.convert("RGB")
+    out_jpg = src.replace(".png", ".jpg") if src.endswith(".png") else src
+    cropped.save(out_jpg, "JPEG", quality=92, optimize=True, progressive=True)
     print(f"{filename}: source {w}x{h}, crop box {box}, output 900x900")
 
 print("Done.")

@@ -28,9 +28,11 @@ WHITE  = (255, 255, 255)
 
 CARDS = [
     ("uebersicht", "visitenkarten/",             "Alle Visitenkarten"),
-    ("khafi",      "visitenkarten/khafi.html",   "Mustafa Khafi · Geschäftsführer"),
+    ("khafi",      "visitenkarten/khafi.html",   "Mustafa Khafi · CEO & Founder"),
     ("julia",      "visitenkarten/julia.html",   "Julia Schneider · Partnerschaften"),
     ("cornelia",   "visitenkarten/cornelia.html","Cornelia Jöge · Bereichsleiterin Nord"),
+    ("holger",     "visitenkarten/holger.html",  "Holger Maß · Projektkoordination"),
+    ("abdul",      "visitenkarten/abdul.html",   "Abdul Karatas · Assistenz Geschäftsführung"),
 ]
 
 def make_qr(url: str, label: str, out: str, logo_path: str | None = None):

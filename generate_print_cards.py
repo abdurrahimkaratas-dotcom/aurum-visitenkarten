@@ -27,10 +27,26 @@ PERSONS = [
     {
         "slug": "khafi",
         "name": "Mustafa Khafi",
-        "role": "Geschäftsführer",
+        "role": "CEO & Founder",
         "phone": "+49 711 36083610",
         "email": "m.khafi@aurum-fassadenreinigung.de",
         "url": f"{BASE_URL}/khafi.html",
+    },
+    {
+        "slug": "holger",
+        "name": "Holger Maß",
+        "role": "Leitung Projektkoordination",
+        "phone": "+49 711 36083645",
+        "email": "h.mass@aurum-fassadenreinigung.de",
+        "url": f"{BASE_URL}/holger.html",
+    },
+    {
+        "slug": "abdul",
+        "name": "Abdul Karatas",
+        "role": "Assistenz der Geschäftsführung",
+        "phone": "+49 711 36083644",
+        "email": "a.karatas@aurum-fassadenreinigung.de",
+        "url": f"{BASE_URL}/abdul.html",
     },
     {
         "slug": "julia",

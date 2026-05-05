@@ -42,11 +42,15 @@ PRINT_DIR = os.path.join(ROOT, "print-cards")
 
 PERSONS_FRONT = [
     os.path.join(PRINT_DIR, "khafi-front.png"),
+    os.path.join(PRINT_DIR, "holger-front.png"),
+    os.path.join(PRINT_DIR, "abdul-front.png"),
     os.path.join(PRINT_DIR, "julia-front.png"),
     os.path.join(PRINT_DIR, "cornelia-front.png"),
 ]
 PERSONS_BACK = [
     os.path.join(PRINT_DIR, "khafi-back.png"),
+    os.path.join(PRINT_DIR, "holger-back.png"),
+    os.path.join(PRINT_DIR, "abdul-back.png"),
     os.path.join(PRINT_DIR, "julia-back.png"),
     os.path.join(PRINT_DIR, "cornelia-back.png"),
 ]

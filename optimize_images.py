@@ -25,7 +25,7 @@ IMG_DIR = os.path.join(ROOT, "images")
 # Portraits: 3 Varianten für srcset (kleine, mittlere, große Karte)
 PORTRAIT_SIZES = [400, 600, 900]
 
-PORTRAITS = ["khafi", "julia", "cornelia"]
+PORTRAITS = ["khafi", "julia", "cornelia", "holger", "abdul"]
 LOGO = "aurum-logo"
 
 

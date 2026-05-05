@@ -1,0 +1,11 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Maß;Holger;;;
+FN:Holger Maß
+ORG:Aurum Deutschland GmbH
+TITLE:Leitung Projektkoordination
+TEL;TYPE=WORK,VOICE:+49 711 36083645
+EMAIL;TYPE=WORK:h.mass@aurum-fassadenreinigung.de
+URL:https://www.aurum-fassadenreinigung.de
+ADR;TYPE=WORK:;;Königstraße 27;Stuttgart;;70173;Deutschland
+END:VCARD

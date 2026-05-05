@@ -1,0 +1,11 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Karatas;Abdul;;;
+FN:Abdul Karatas
+ORG:Aurum Deutschland GmbH
+TITLE:Assistenz der Geschäftsführung
+TEL;TYPE=WORK,VOICE:+49 711 36083644
+EMAIL;TYPE=WORK:a.karatas@aurum-fassadenreinigung.de
+URL:https://www.aurum-fassadenreinigung.de
+ADR;TYPE=WORK:;;Königstraße 27;Stuttgart;;70173;Deutschland
+END:VCARD
