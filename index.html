@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digitale Visitenkarten · Aurum Fassadenreinigung</title>
+  <meta name="theme-color" content="#004651">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Override flex centering of body for index page */
+    html, body { background: var(--aurum-cream-warm); }
+    body {
+      display: block;
+      padding: 0 0 80px;
+      align-items: stretch;
+    }
+
+    .hero {
+      position: relative;
+      background:
+        radial-gradient(ellipse at 20% 0%, rgba(218, 176, 93, 0.25) 0%, transparent 55%),
+        radial-gradient(ellipse at 100% 100%, rgba(218, 176, 93, 0.15) 0%, transparent 55%),
+        linear-gradient(160deg, var(--aurum-petrol-light) 0%, var(--aurum-petrol) 55%, var(--aurum-petrol-dark) 100%);
+      color: var(--aurum-white);
+      padding: 64px 24px 120px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    /* subtle gold rule above hero bottom */
+    .hero::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 4px;
+      background: linear-gradient(to right, var(--aurum-gold-dark), var(--aurum-gold), var(--aurum-gold-dark));
+    }
+
+    .hero__logo {
+      display: block;
+      margin: 0 auto 18px;
+      height: 96px;
+      width: auto;
+      background: var(--aurum-white);
+      padding: 12px 22px;
+      border-radius: 14px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+    }
+
+    .hero__rule {
+      display: block;
+      width: 80px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--aurum-gold-light), transparent);
+      margin: 22px auto 18px;
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: 46px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      line-height: 1.1;
+      margin-bottom: 12px;
+      color: var(--aurum-white);
+    }
+
+    .hero__sub {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 18px;
+      color: var(--aurum-mint);
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    .hero__chips {
+      display: flex;
+      gap: 6px;
+      justify-content: center;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+
+    .hero__chip {
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--aurum-gold-light);
+      padding: 6px 14px;
+      border: 1px solid rgba(218, 176, 93, 0.35);
+      border-radius: 999px;
+      font-weight: 600;
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: -80px auto 0;
+      padding: 0 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .tile {
+      background: var(--aurum-white);
+      border-radius: 22px;
+      box-shadow: var(--shadow-medium);
+      padding: 40px 28px 30px;
+      text-align: center;
+      text-decoration: none;
+      color: var(--aurum-ink);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      display: block;
+      position: relative;
+      border: 1px solid rgba(218, 176, 93, 0.25);
+      overflow: hidden;
+    }
+
+    .tile::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(to right, var(--aurum-gold-dark), var(--aurum-gold), var(--aurum-gold-dark));
+    }
+
+    .tile:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-strong);
+    }
+
+    .tile__photo-wrap {
+      width: 132px;
+      height: 132px;
+      border-radius: 50%;
+      margin: 0 auto 18px;
+      padding: 5px;
+      background: linear-gradient(135deg, var(--aurum-gold-light) 0%, var(--aurum-gold) 50%, var(--aurum-gold-dark) 100%);
+      box-shadow: 0 10px 24px rgba(0, 70, 81, 0.18);
+    }
+
+    .tile__photo {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: 50% 35%;
+      display: block;
+      border: 4px solid var(--aurum-white);
+    }
+
+    .tile h2 {
+      font-family: var(--serif);
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--aurum-petrol-dark);
+      margin-bottom: 6px;
+      letter-spacing: 0.3px;
+    }
+
+    .tile__role {
+      color: var(--aurum-gold-dark);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .tile__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--aurum-petrol);
+      text-transform: uppercase;
+      letter-spacing: 1.8px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(218, 176, 93, 0.35);
+      width: 100%;
+      justify-content: center;
+    }
+
+    .tile__cta::after {
+      content: "→";
+      transition: transform 0.2s ease;
+    }
+
+    .tile:hover .tile__cta::after { transform: translateX(4px); }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 56px;
+      color: var(--aurum-grey-light);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .footer-note a { color: var(--aurum-gold-dark); text-decoration: none; }
+    .footer-note a:hover { color: var(--aurum-petrol); }
+
+    @media (max-width: 600px) {
+      .hero { padding: 44px 20px 96px; }
+      .hero__logo { height: 76px; padding: 10px 16px; }
+      .hero h1 { font-size: 34px; }
+      .hero__sub { font-size: 16px; }
+      .container { margin-top: -64px; padding: 0 16px; }
+      .tile { padding: 36px 22px 26px; }
+      .tile h2 { font-size: 22px; }
+      .grid { gap: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <img src="images/aurum-logo.png" alt="Aurum Fassadenreinigung" class="hero__logo">
+    <div class="hero__chips" aria-hidden="true">
+      <span class="hero__chip">Stuttgart</span>
+      <span class="hero__chip">Wohnungswirtschaft</span>
+      <span class="hero__chip">Bundesweit</span>
+    </div>
+    <span class="hero__rule" aria-hidden="true"></span>
+    <h1>Digitale Visitenkarten</h1>
+    <p class="hero__sub">Lernen Sie Ihre persönlichen Ansprechpartner kennen — direkt anrufen, schreiben oder Kontakt speichern.</p>
+  </header>
+
+  <div class="container">
+    <div class="grid">
+      <a class="tile" href="khafi.html">
+        <div class="tile__photo-wrap">
+          <img src="images/khafi.jpg" alt="Mustafa Khafi" class="tile__photo">
+        </div>
+        <h2>Mustafa Khafi</h2>
+        <p class="tile__role">Geschäftsführer</p>
+        <span class="tile__cta">Visitenkarte ansehen</span>
+      </a>
+
+      <a class="tile" href="julia.html">
+        <div class="tile__photo-wrap">
+          <img src="images/julia.jpg" alt="Julia Schneider" class="tile__photo">
+        </div>
+        <h2>Julia Schneider</h2>
+        <p class="tile__role">Partnerschaften Wohnungswirtschaft</p>
+        <span class="tile__cta">Visitenkarte ansehen</span>
+      </a>
+
+      <a class="tile" href="cornelia.html">
+        <div class="tile__photo-wrap">
+          <img src="images/cornelia.jpg" alt="Cornelia Jöge" class="tile__photo">
+        </div>
+        <h2>Cornelia Jöge</h2>
+        <p class="tile__role">Bereichsleiterin Nord</p>
+        <span class="tile__cta">Visitenkarte ansehen</span>
+      </a>
+    </div>
+
+    <p class="footer-note">
+      <a href="https://www.aurum-fassadenreinigung.de" target="_blank" rel="noopener">aurum-fassadenreinigung.de</a>
+    </p>
+  </div>
+</body>
+</html>

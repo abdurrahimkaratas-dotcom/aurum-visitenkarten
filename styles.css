@@ -1,0 +1,496 @@
+/* Aurum Brand Tokens — extrahiert von aurum-fassadenreinigung.de */
+:root {
+  --aurum-petrol: #004651;          /* Primärfarbe Webseite */
+  --aurum-petrol-dark: #002d35;
+  --aurum-petrol-light: #005e65;    /* Sekundär Webseite */
+  --aurum-mint: #b7d8d1;            /* Hellteal Akzent */
+  --aurum-gold: #dab05d;            /* Gold hell */
+  --aurum-gold-light: #ecd193;
+  --aurum-gold-dark: #997433;       /* Gold dunkel */
+  --aurum-cream: #fbfbfb;
+  --aurum-cream-warm: #f8f4ea;
+  --aurum-cream-dark: #ede8da;
+  --aurum-grey: #4a5a5d;
+  --aurum-grey-light: #8a979a;
+  --aurum-white: #ffffff;
+  --aurum-ink: #002025;
+
+  --shadow-soft: 0 4px 20px rgba(0, 70, 81, 0.06), 0 1px 3px rgba(0, 70, 81, 0.04);
+  --shadow-medium: 0 16px 50px rgba(0, 70, 81, 0.10), 0 4px 12px rgba(0, 70, 81, 0.06);
+  --shadow-strong: 0 30px 80px rgba(0, 70, 81, 0.18), 0 8px 24px rgba(0, 70, 81, 0.10);
+  --shadow-gold: 0 6px 20px rgba(218, 176, 93, 0.30);
+
+  --serif: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--sans);
+  background:
+    radial-gradient(ellipse at top, rgba(218, 176, 93, 0.08) 0%, transparent 55%),
+    radial-gradient(ellipse at bottom, rgba(0, 70, 81, 0.06) 0%, transparent 55%),
+    var(--aurum-cream-warm);
+  background-attachment: fixed;
+  color: var(--aurum-ink);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px 60px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+.topnav {
+  width: 100%;
+  max-width: 440px;
+  margin-bottom: 18px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.topnav__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: var(--aurum-white);
+  color: var(--aurum-petrol-dark);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border-radius: 999px;
+  border: 1px solid rgba(218, 176, 93, 0.45);
+  box-shadow: var(--shadow-soft);
+  transition: all 0.2s ease;
+}
+
+.topnav__link:hover {
+  background: var(--aurum-petrol-dark);
+  color: var(--aurum-gold-light);
+  border-color: var(--aurum-petrol-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-medium);
+}
+
+.topnav__link svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* ------- Card ------- */
+.card {
+  width: 100%;
+  max-width: 440px;
+  background: var(--aurum-white);
+  border-radius: 24px;
+  box-shadow: var(--shadow-strong);
+  position: relative;
+  overflow: visible;
+}
+
+/* Subtle outer glow ring */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 25px;
+  padding: 1px;
+  background: linear-gradient(135deg,
+    rgba(218, 176, 93, 0.5) 0%,
+    rgba(218, 176, 93, 0.05) 25%,
+    rgba(0, 70, 81, 0.05) 75%,
+    rgba(218, 176, 93, 0.4) 100%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.card__inner {
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ------- Header (light, brand-respectful) ------- */
+.card__header {
+  position: relative;
+  background:
+    linear-gradient(180deg, var(--aurum-cream-warm) 0%, var(--aurum-white) 100%);
+  padding: 36px 28px 24px;
+  text-align: center;
+  border-bottom: 1px solid rgba(218, 176, 93, 0.20);
+}
+
+.card__logo {
+  display: block;
+  margin: 0 auto;
+  height: 86px;
+  width: auto;
+}
+
+.card__brandbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 16px;
+  color: var(--aurum-gold-dark);
+}
+
+.card__brandbar::before,
+.card__brandbar::after {
+  content: "";
+  height: 1px;
+  width: 36px;
+  background: linear-gradient(to right, transparent, var(--aurum-gold), transparent);
+}
+
+.card__brandbar-text {
+  font-size: 9px;
+  letter-spacing: 4px;
+  font-weight: 700;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* ------- Hero band with photo ------- */
+.card__hero {
+  position: relative;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(218, 176, 93, 0.18) 0%, transparent 55%),
+    linear-gradient(160deg, var(--aurum-petrol-light) 0%, var(--aurum-petrol) 50%, var(--aurum-petrol-dark) 100%);
+  height: 90px;
+}
+
+.card__photo-wrap {
+  position: absolute;
+  bottom: -68px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 144px;
+  height: 144px;
+  border-radius: 50%;
+  padding: 5px;
+  background: linear-gradient(135deg,
+    var(--aurum-gold-light) 0%,
+    var(--aurum-gold) 35%,
+    var(--aurum-gold-dark) 100%);
+  box-shadow:
+    0 0 0 1px rgba(218, 176, 93, 0.30),
+    0 16px 36px rgba(0, 45, 53, 0.30);
+  z-index: 2;
+}
+
+.card__photo {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 35%;
+  display: block;
+  border: 4px solid var(--aurum-white);
+  box-shadow: inset 0 0 0 1px rgba(0, 70, 81, 0.05);
+}
+
+/* ------- Body ------- */
+.card__body {
+  padding: 88px 32px 32px;
+  text-align: center;
+  background: var(--aurum-white);
+}
+
+.card__name {
+  font-family: var(--serif);
+  font-size: 36px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  color: var(--aurum-petrol-dark);
+  margin-bottom: 8px;
+  line-height: 1.05;
+}
+
+.card__role {
+  font-size: 10px;
+  color: var(--aurum-gold-dark);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 22px;
+}
+
+.card__bio {
+  font-family: var(--serif);
+  font-size: 17px;
+  font-style: italic;
+  color: var(--aurum-grey);
+  margin: 0 auto 28px;
+  max-width: 340px;
+  line-height: 1.55;
+  font-weight: 500;
+  position: relative;
+}
+
+.card__bio::before {
+  content: "“";
+  font-family: var(--serif);
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 48px;
+  color: var(--aurum-gold);
+  line-height: 1;
+  font-style: normal;
+  opacity: 0.6;
+}
+
+.card__socials {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: -8px 0 8px;
+}
+
+.social {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--aurum-petrol);
+  color: var(--aurum-gold-light);
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+  box-shadow: 0 3px 10px rgba(0, 45, 53, 0.2);
+}
+
+.social:hover {
+  background: var(--aurum-petrol-dark);
+  color: var(--aurum-white);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 45, 53, 0.3);
+}
+
+.social svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+.card__divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 28px 0 22px;
+  color: var(--aurum-gold-dark);
+}
+
+.card__divider::before,
+.card__divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(218, 176, 93, 0.5));
+  max-width: 90px;
+}
+
+.card__divider::after {
+  background: linear-gradient(to left, transparent, rgba(218, 176, 93, 0.5));
+}
+
+.card__divider-mark {
+  font-family: var(--serif);
+  font-size: 12px;
+  letter-spacing: 5px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* ------- Contacts ------- */
+.card__contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+
+.contact {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 13px 16px;
+  background: var(--aurum-cream-warm);
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--aurum-ink);
+  transition: all 0.22s cubic-bezier(.2,.8,.2,1);
+  border: 1px solid transparent;
+}
+
+.contact:hover {
+  background: var(--aurum-white);
+  border-color: rgba(218, 176, 93, 0.40);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-soft);
+}
+
+.contact__icon {
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--aurum-petrol-light) 0%, var(--aurum-petrol-dark) 100%);
+  color: var(--aurum-gold-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 45, 53, 0.25);
+}
+
+.contact__icon svg {
+  width: 17px;
+  height: 17px;
+  stroke-width: 2;
+}
+
+.contact__label {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 2.2px;
+  color: var(--aurum-grey-light);
+  display: block;
+  margin-bottom: 3px;
+  font-weight: 700;
+}
+
+.contact__value {
+  font-size: 14.5px;
+  font-weight: 500;
+  color: var(--aurum-petrol-dark);
+  letter-spacing: 0.1px;
+  word-break: break-word;
+}
+
+/* ------- Buttons ------- */
+.card__actions {
+  margin-top: 24px;
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 700;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  transition: all 0.22s cubic-bezier(.2,.8,.2,1);
+}
+
+.btn--primary {
+  background: linear-gradient(135deg, var(--aurum-petrol-light) 0%, var(--aurum-petrol-dark) 100%);
+  color: var(--aurum-gold-light);
+  box-shadow: 0 4px 14px rgba(0, 45, 53, 0.25);
+}
+
+.btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 45, 53, 0.35), var(--shadow-gold);
+  color: var(--aurum-white);
+}
+
+.btn--secondary {
+  background: var(--aurum-white);
+  color: var(--aurum-petrol-dark);
+  border: 1.5px solid var(--aurum-petrol-dark);
+}
+
+.btn--secondary:hover {
+  background: var(--aurum-petrol-dark);
+  color: var(--aurum-gold-light);
+  transform: translateY(-2px);
+}
+
+/* ------- Footer ------- */
+.card__footer {
+  text-align: center;
+  font-size: 10px;
+  color: var(--aurum-grey-light);
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding: 18px 20px;
+  background: var(--aurum-cream-warm);
+  border-top: 1px solid rgba(218, 176, 93, 0.25);
+  font-weight: 700;
+}
+
+.card__footer a {
+  color: var(--aurum-gold-dark);
+  text-decoration: none;
+}
+
+.card__footer a:hover { color: var(--aurum-petrol); }
+
+/* ------- Responsive ------- */
+@media (max-width: 480px) {
+  body { padding: 20px 12px; }
+  .card { border-radius: 20px; }
+  .card__inner { border-radius: 20px; }
+  .card__name { font-size: 30px; }
+  .card__bio { font-size: 16px; max-width: none; }
+  .card__logo { height: 72px; }
+  .card__photo-wrap { width: 130px; height: 130px; bottom: -62px; padding: 4px; }
+  .card__body { padding: 80px 20px 24px; }
+  .card__header { padding: 28px 20px 20px; }
+  .card__brandbar { gap: 8px; }
+  .card__brandbar::before,
+  .card__brandbar::after { width: 18px; }
+  .card__brandbar-text { font-size: 8px; letter-spacing: 2px; }
+  .contact { padding: 12px 14px; gap: 12px; }
+  .contact__icon { width: 36px; height: 36px; }
+  .contact__value { font-size: 13.5px; }
+  .btn { padding: 13px 14px; font-size: 10.5px; letter-spacing: 1.4px; }
+  .card__divider::before,
+  .card__divider::after { max-width: 60px; }
+  .card__footer { font-size: 9px; letter-spacing: 1.8px; padding: 16px; }
+}
+
+@media (max-width: 360px) {
+  .card__name { font-size: 26px; }
+  .card__brandbar-text { letter-spacing: 1.5px; }
+  .contact__value { font-size: 13px; }
+  .btn { font-size: 10px; padding: 12px 10px; }
+}
+
+/* ------- Print ------- */
+@media print {
+  body { background: white; padding: 0; }
+  .card { box-shadow: none; border: 1px solid #ddd; }
+  .card__actions { display: none; }
+}

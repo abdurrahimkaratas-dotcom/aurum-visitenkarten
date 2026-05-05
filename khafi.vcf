@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Khafi;Mustafa;;;
+FN:Mustafa Khafi
+ORG:Aurum Deutschland GmbH
+TITLE:Geschäftsführer
+TEL;TYPE=WORK,VOICE:+49 711 36083610
+EMAIL;TYPE=WORK:m.khafi@aurum-fassadenreinigung.de
+URL:https://www.aurum-fassadenreinigung.de
+URL;TYPE=LinkedIn:https://www.linkedin.com/in/mustafa-khafi-258987211/
+ADR;TYPE=WORK:;;Königstraße 27;Stuttgart;;70173;Deutschland
+END:VCARD

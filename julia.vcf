@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Schneider;Julia;;;
+FN:Julia Schneider
+ORG:Aurum Deutschland GmbH
+TITLE:Expertin für Partnerschaften in der Wohnungswirtschaft
+TEL;TYPE=WORK,VOICE:+49 711 36083620
+EMAIL;TYPE=WORK:j.schneider@aurum-fassadenreinigung.de
+URL:https://www.aurum-fassadenreinigung.de
+URL;TYPE=LinkedIn:https://www.linkedin.com/in/julia-schneider-345a47355/
+ADR;TYPE=WORK:;;Königstraße 27;Stuttgart;;70173;Deutschland
+END:VCARD
